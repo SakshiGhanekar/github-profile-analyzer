@@ -1,0 +1,155 @@
+{
+  "info": {
+    "name": "GitHub Profile Analyzer API",
+    "description": "API collection for the GitHub Profile Analyzer backend service.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health"
+          ]
+        },
+        "description": "Checks the health of the API and database connection."
+      },
+      "response": []
+    },
+    {
+      "name": "Analyze Profile",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/github/analyze/:username",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "github",
+            "analyze",
+            ":username"
+          ],
+          "variable": [
+            {
+              "key": "username",
+              "value": "torvalds",
+              "description": "GitHub username to analyze"
+            }
+          ]
+        },
+        "description": "Fetches, analyzes, and saves a GitHub profile to the database."
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Profiles",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/github/profiles?page=1&limit=10&search=&sortBy=profile_score&order=DESC",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "github",
+            "profiles"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            },
+            {
+              "key": "search",
+              "value": "",
+              "description": "Search by username (optional)"
+            },
+            {
+              "key": "sortBy",
+              "value": "profile_score",
+              "description": "Sort fields: followers, public_repos, profile_score"
+            },
+            {
+              "key": "order",
+              "value": "DESC",
+              "description": "Sort order: ASC or DESC"
+            }
+          ]
+        },
+        "description": "Fetches all stored profiles. Includes pagination, sorting, and search capabilities."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Profile",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/github/profile/:username",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "github",
+            "profile",
+            ":username"
+          ],
+          "variable": [
+            {
+              "key": "username",
+              "value": "torvalds",
+              "description": "Analyzed GitHub username"
+            }
+          ]
+        },
+        "description": "Fetches a single analyzed profile directly from the database by username."
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
