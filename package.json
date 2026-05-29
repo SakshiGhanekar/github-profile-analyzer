@@ -1,5 +1,5 @@
 {
-  "name": "github-profile-analyzer",
+  "name": "educase",
   "version": "1.0.0",
   "description": "GitHub Profile Analyzer API",
   "main": "server.js",

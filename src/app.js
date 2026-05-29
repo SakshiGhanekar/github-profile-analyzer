@@ -24,6 +24,11 @@ app.use(apiLimiter);
 // Swagger Documentation Route
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
+// Root route
+app.get('/', (req, res) => {
+  res.redirect('/api-docs');
+});
+
 // Routes
 app.use('/api/github', githubRoutes);
 
