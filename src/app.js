@@ -25,7 +25,7 @@ app.use(apiLimiter);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 // Root route
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
     project: "GitHub Profile Analyzer API",
@@ -38,7 +38,6 @@ app.get('/', (req, res) => {
     }
   });
 });
-
 // Routes
 app.use('/api/github', githubRoutes);
 
