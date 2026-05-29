@@ -10,6 +10,10 @@ const options = {
     },
     servers: [
       {
+        url: 'https://github-profile-analyzer-pw6s.onrender.com',
+        description: 'Production server',
+      },
+      {
         url: 'http://localhost:3000',
         description: 'Development server',
       },

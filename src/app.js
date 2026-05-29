@@ -26,7 +26,17 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 // Root route
 app.get('/', (req, res) => {
-  res.redirect('/api-docs');
+  res.status(200).json({
+    success: true,
+    project: "GitHub Profile Analyzer API",
+    status: "Running",
+    documentation: "/api-docs",
+    endpoints: {
+      analyzeProfile: "/api/github/analyze/:username",
+      getAllProfiles: "/api/github/profiles",
+      getSingleProfile: "/api/github/profile/:username"
+    }
+  });
 });
 
 // Routes
