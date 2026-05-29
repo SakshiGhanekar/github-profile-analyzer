@@ -7,8 +7,17 @@ const sequelize = new Sequelize(
   config.db.password,
   {
     host: config.db.host,
+    port: config.db.port,
     dialect: 'mysql',
-    logging: false, // Set to true to see SQL queries in console
+    logging: config.env === 'production' ? false : console.log,
+    dialectOptions: {
+      ...(config.env === 'production' && {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        }
+      })
+    }
   }
 );
 
